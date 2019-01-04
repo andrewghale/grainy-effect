@@ -64,3 +64,34 @@ function showSlides(n) {
   slides[slideIndex - 1].style.display = "block";
   dots[slideIndex - 1].className += " active";
 }
+
+$(window).scroll(function() {
+  var wScroll = $(this).scrollTop();
+
+  $(".title-container").css({
+    transform: "translate(-50%, " + wScroll / 3 + "%)"
+  });
+});
+
+// When the user scrolls the page, execute myFunction
+window.onscroll = function() {
+  myFunction();
+};
+
+// Get the navbar
+var navbar = document.getElementById("navbar");
+var mainContent = document.getElementById("main-content");
+
+// Get the offset position of the navbar
+var sticky = navbar.offsetTop;
+
+// Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
+function myFunction() {
+  if (window.pageYOffset >= sticky) {
+    navbar.classList.add("sticky");
+    mainContent.classList.add("nav-margin");
+  } else {
+    navbar.classList.remove("sticky");
+    mainContent.classList.remove("nav-margin");
+  }
+}
